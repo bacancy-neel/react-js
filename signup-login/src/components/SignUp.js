@@ -27,7 +27,7 @@ class SignUp extends Component {
                 <input
                     className="form"
                     type="text"
-                    placeholder="Enter email"
+                    placeholder="Enter e-mail"
                     id="email"
                     value={this.props.email.value}
                     onChange={(e) => this.props.inputChange(e, 3)}
