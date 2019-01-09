@@ -2,12 +2,24 @@
  text-align: center;
 }
 
-.body {
-  
-  width: 55%;
-  margin-left: 22.5%;
-  margin-right: 22.5%;
-  padding-left: 9%
+
+.container{
+  width: 1000px;
+  margin-left: 460px
+}
+
+header{
+  width:1000px; 
+  float:left; 
+  background: pink; 
+  height: 50px;
+}
+footer {
+  width:1000px; 
+  float:left; 
+  background: black; 
+  height: 50px;
+  color: #ffffff;
 }
 
 .signUpForm, .loginForm {

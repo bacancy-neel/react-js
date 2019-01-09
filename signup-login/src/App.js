@@ -7,11 +7,11 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="container">
         <div className="header"><Header /></div>
         <div className="body"><Body /></div>
         <div className="footer"><Footer /></div>
-      </React.Fragment>
+      </div>
     )
   };
 }
