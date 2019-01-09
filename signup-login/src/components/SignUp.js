@@ -41,7 +41,7 @@ class SignUp extends Component {
                     onChange={(e) => this.props.inputChange(e, 4)}
                 />
 
-                <button >
+                <button>
                     Submit
             </button>
             </div>
