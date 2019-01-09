@@ -13,7 +13,7 @@ class SignUp extends Component {
                     className="signUpForm"
                     type="text"
                     placeholder="Enter first name"
-                    id="first_name"
+                    name="first_name"
                     value={this.props.f_name.value}
                     onChange={(e) => this.props.inputChange(e)}
                 />
@@ -21,15 +21,23 @@ class SignUp extends Component {
                     className="signUpForm"
                     type="text"
                     placeholder="Enter last name"
-                    id="last_name"
+                    name="last_name"
                     value={this.props.l_name.value}
                     onChange={(e) => this.props.inputChange(e)}
                 />
                 <input
                     className="signUpForm"
                     type="text"
+                    placeholder="Enter user name"
+                    name="username"
+                    value={this.props.u_name.value}
+                    onChange={(e) => this.props.inputChange(e)}
+                />
+                <input
+                    className="signUpForm"
+                    type="text"
                     placeholder="Enter e-mail"
-                    id="email"
+                    name="email"
                     value={this.props.email.value}
                     onChange={(e) => this.props.inputChange(e)}
                 />
@@ -37,12 +45,12 @@ class SignUp extends Component {
                     className="signUpForm"
                     type="password"
                     placeholder="Enter password"
-                    id="password"
+                    name="password"
                     value={this.props.pass.value}
                     onChange={(e) => this.props.inputChange(e)}
                 />
 
-                <input type="button" value="Submit" className="btn" />
+                <input type="button" value="Submit" className="btn" onClick={() => this.props.onAddUser()} />
             </div>
         );
     }
