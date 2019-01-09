@@ -1,11 +1,11 @@
 
   .login-form {
-    
+    background-color: lavender;
     width: 300px;
     height: 400px;
     margin: auto;
     border: 2px solid grey;
-    border-radius: 3px;
+    border-radius: 10px;
     padding: 20px;
     padding-bottom: 70px;
   }
