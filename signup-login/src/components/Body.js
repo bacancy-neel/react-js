@@ -30,25 +30,21 @@ class Body extends Component {
             case 1:
                 s_obj.first_name = e.target.value;
                 this.setState({ s_obj })
-
                 break;
 
             case 2:
                 s_obj.last_name = e.target.value;
                 this.setState({ s_obj })
-
                 break;
 
             case 3:
                 s_obj.email = e.target.value;
                 this.setState({ s_obj })
-
                 break;
 
             case 4:
                 s_obj.password = e.target.value;
                 this.setState({ s_obj })
-
                 break;
 
             case 5:
