@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './SignUp.css';
 
 
+
 class SignUp extends Component {
     render() {
 
@@ -9,41 +10,39 @@ class SignUp extends Component {
             <div className="signup-form" >
                 <p>Sign Up</p>
                 <input
-                    className="form"
+                    className="signUpForm"
                     type="text"
                     placeholder="Enter first name"
-                    id="f_name"
+                    id="first_name"
                     value={this.props.f_name.value}
-                    onChange={(e) => this.props.inputChange(e, 1)}
+                    onChange={(e) => this.props.inputChange(e)}
                 />
                 <input
-                    className="form"
+                    className="signUpForm"
                     type="text"
                     placeholder="Enter last name"
-                    id="l_name"
+                    id="last_name"
                     value={this.props.l_name.value}
-                    onChange={(e) => this.props.inputChange(e, 2)}
+                    onChange={(e) => this.props.inputChange(e)}
                 />
                 <input
-                    className="form"
+                    className="signUpForm"
                     type="text"
                     placeholder="Enter e-mail"
                     id="email"
                     value={this.props.email.value}
-                    onChange={(e) => this.props.inputChange(e, 3)}
+                    onChange={(e) => this.props.inputChange(e)}
                 />
                 <input
-                    className="form"
+                    className="signUpForm"
                     type="password"
                     placeholder="Enter password"
                     id="password"
                     value={this.props.pass.value}
-                    onChange={(e) => this.props.inputChange(e, 4)}
+                    onChange={(e) => this.props.inputChange(e)}
                 />
 
-                <button>
-                    Submit
-            </button>
+                <input type="button" value="Submit" className="btn" />
             </div>
         );
     }

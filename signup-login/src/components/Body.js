@@ -23,43 +23,25 @@ class Body extends Component {
         this.inputChange = this.inputChange.bind(this);
     }
 
-    inputChange(e, id) {
-        let s_obj = { ...this.state.signUpForm }
-        let l_obj = { ...this.state.loginForm }
-        switch (id) {
-            case 1:
-                s_obj.first_name = e.target.value;
-                this.setState({ s_obj })
-                break;
+    inputChange(e) {
+        console.log("Function called!");
 
-            case 2:
-                s_obj.last_name = e.target.value;
-                this.setState({ s_obj })
-                break;
+        if (e.target.className === "signUpForm") {
+            const signUpForm = { ...this.state.signUpForm, [e.target.id]: e.target.value };
+            this.setState({ signUpForm }, () => {
+                console.log(this.state);
+            })
+        }
 
-            case 3:
-                s_obj.email = e.target.value;
-                this.setState({ s_obj })
-                break;
-
-            case 4:
-                s_obj.password = e.target.value;
-                this.setState({ s_obj })
-                break;
-
-            case 5:
-                l_obj.email = e.target.value;
-                this.setState({ l_obj })
-                break;
-
-            case 6:
-                l_obj.password = e.target.value;
-                this.setState({ l_obj })
-                break;
-
-            default: break;
+        else {
+            const loginForm = { ...this.state.loginForm, [e.target.id]: e.target.value };
+            this.setState({ loginForm }, () => {
+                console.log(this.state);
+            })
         }
     }
+
+
 
 
     render() {

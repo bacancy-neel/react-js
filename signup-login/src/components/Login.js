@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Login.css';
 
 
+
 class Login extends Component {
     render() {
 
@@ -9,15 +10,15 @@ class Login extends Component {
             <div className="login-form" >
                 <p>Log In</p>
                 <input
-                    className="form"
+                    className="loginForm"
                     type="text"
                     placeholder="Enter e-mail"
                     id="email"
                     value={this.props.email.value}
-                    onChange={(e) => this.props.inputChange(e, 5)}
+                    onChange={(e) => this.props.inputChange(e, 6)}
                 />
                 <input
-                    className="form"
+                    className="loginForm"
                     type="password"
                     placeholder="Enter password"
                     id="password"
@@ -25,9 +26,7 @@ class Login extends Component {
                     onChange={(e) => this.props.inputChange(e, 6)}
                 />
 
-                <button >
-                    Submit
-            </button>
+                <input type="button" value="Submit" className="btn" onClick={() => this.props.preview()} />
             </div>
         );
     }
