@@ -26,7 +26,7 @@ class Login extends Component {
                     onChange={(e) => this.props.inputChange(e, 6)}
                 />
 
-                <input type="button" value="Submit" className="btn" onClick={() => this.props.preview()} />
+                <input type="button" value="Submit" className="btn" />
             </div>
         );
     }
