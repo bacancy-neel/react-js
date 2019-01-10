@@ -153,8 +153,22 @@ class Body extends Component {
 
         return (
             <React.Fragment>
-                <SignUp inputChange={this.inputChange} text={this.state.text} onAddUser={this.onAddUser} f_name={this.state.signUpForm.first_name} l_name={this.state.signUpForm.last_name} u_name={this.state.signUpForm.username} email={this.state.signUpForm.email} pass={this.state.signUpForm.password} />
-                <Login inputChange={this.inputChange} onLogin={this.onLogin} u_name={this.state.loginForm.username} pass={this.state.loginForm.password} />
+                <SignUp
+                    inputChange={this.inputChange}
+                    text={this.state.text}
+                    onAddUser={this.onAddUser}
+                    f_name={this.state.signUpForm.first_name}
+                    l_name={this.state.signUpForm.last_name}
+                    u_name={this.state.signUpForm.username}
+                    email={this.state.signUpForm.email}
+                    pass={this.state.signUpForm.password}
+                />
+                <Login
+                    inputChange={this.inputChange}
+                    onLogin={this.onLogin}
+                    u_name={this.state.loginForm.username}
+                    pass={this.state.loginForm.password}
+                />
             </React.Fragment>
         );
     }
