@@ -53,7 +53,8 @@ class Body extends Component {
             default:
                 break;
         }
-
+        if (txt !== "") e.target.style.borderColor = "red";
+        else e.target.style.borderColor = "lightgray";
         return txt;
     }
 
