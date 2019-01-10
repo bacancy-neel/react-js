@@ -13,24 +13,54 @@ class Body extends Component {
                 username: "",
                 email: "",
                 password: ""
-
             },
             users: [],
             loginForm: {
                 username: "",
                 password: ""
-
-            }
+            },
+            text: ""
         };
         this.inputChange = this.inputChange.bind(this);
+        this.onAddUser = this.onAddUser.bind(this);
+        this.onLogin = this.onLogin.bind(this);
+        this.validate = this.validate.bind(this);
+    }
+
+    validate = (e) => {
+        let re, txt;
+        switch (e.target.name) {
+            case "first_name":
+            case "last_name":
+                re = /^[a-zA-Z ]{3,30}$/;
+                (!re.test(e.target.value)) ? txt = "You must enter valid name" : txt = "";
+                break;
+            case "email":
+                re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                (!re.test(e.target.value)) ? txt = "You must enter valid email" : txt = "";
+                break;
+            case "username":
+                re = /^[A-Za-z0-9_]{3,20}$/;
+                (!re.test(e.target.value)) ? txt = "You must enter valid username" : txt = "";
+                break;
+            case "password":
+                re = /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/;
+                (!re.test(e.target.value)) ? txt = "You must enter valid password" : txt = "";
+                break;
+            default:
+                break;
+        }
+
+        return txt;
     }
 
     inputChange = (e) => {
         console.log("Function called!");
-
+        let text;
         if (e.target.className === "signUpForm") {
+            text = this.validate(e);
             const signUpForm = { ...this.state.signUpForm, [e.target.name]: e.target.value };
-            this.setState({ signUpForm }, () => {
+            this.setState({ signUpForm, text }, () => {
                 console.log(this.state);
             })
         }
@@ -51,6 +81,10 @@ class Body extends Component {
 
         if (signUpForm.first_name === "" || signUpForm.last_name === "" || signUpForm.username === "" || signUpForm.email === "" || signUpForm.password === "") {
             alert("Fill all details");
+            return;
+        }
+        if (this.state.text !== "") {
+            alert("Data invalid");
             return;
         }
 
@@ -119,7 +153,7 @@ class Body extends Component {
 
         return (
             <React.Fragment>
-                <SignUp inputChange={this.inputChange} onAddUser={this.onAddUser} f_name={this.state.signUpForm.first_name} l_name={this.state.signUpForm.last_name} u_name={this.state.signUpForm.username} email={this.state.signUpForm.email} pass={this.state.signUpForm.password} />
+                <SignUp inputChange={this.inputChange} text={this.state.text} onAddUser={this.onAddUser} f_name={this.state.signUpForm.first_name} l_name={this.state.signUpForm.last_name} u_name={this.state.signUpForm.username} email={this.state.signUpForm.email} pass={this.state.signUpForm.password} />
                 <Login inputChange={this.inputChange} onLogin={this.onLogin} u_name={this.state.loginForm.username} pass={this.state.loginForm.password} />
             </React.Fragment>
         );

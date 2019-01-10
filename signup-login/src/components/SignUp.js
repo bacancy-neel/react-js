@@ -52,6 +52,8 @@ class SignUp extends Component {
 
                 <input type="reset" value="Submit" className="btn" onClick={() => this.props.onAddUser()} />
 
+                <p className="error">{this.props.text}</p>
+
             </form>
         );
     }
