@@ -64,7 +64,6 @@ class Body extends Component {
                 console.log(this.state);
             })
         }
-
         else {
             const loginForm = { ...this.state.loginForm, [e.target.name]: e.target.value };
             this.setState({ loginForm }, () => {
@@ -75,8 +74,6 @@ class Body extends Component {
 
 
     onAddUser = () => {
-        // not allowed AND not working
-
         const { signUpForm, users } = this.state;
 
         if (signUpForm.first_name === "" || signUpForm.last_name === "" || signUpForm.username === "" || signUpForm.email === "" || signUpForm.password === "") {
@@ -148,9 +145,6 @@ class Body extends Component {
 
 
     render() {
-
-
-
         return (
             <React.Fragment>
                 <SignUp
