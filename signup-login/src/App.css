@@ -30,13 +30,17 @@ footer {
 
 input {
   width: 90%;
+  height: 20px;
   margin-bottom: 2%;
   border-radius: 15px;
   border-style: solid;
   border-color: lightgray;
+  text-align: left;
 }
 
 .btn {
+  text-align: center;
+  height: 30px;
   border-radius: 8px;
   border-style: solid;
   border-color: rgba(4, 218, 40, 0.767);
