@@ -28,6 +28,7 @@ class Body extends Component {
     }
 
     validate = (e) => {
+        console.log("VALIDATING");
         let re, txt;
         switch (e.target.name) {
             case "first_name":
@@ -40,8 +41,10 @@ class Body extends Component {
                 (!re.test(e.target.value)) ? txt = "You must enter valid email" : txt = "";
                 break;
             case "username":
+                console.log("USERNAME");
                 re = /^[A-Za-z0-9_]{3,20}$/;
                 (!re.test(e.target.value)) ? txt = "You must enter valid username" : txt = "";
+                console.log(txt);
                 break;
             case "password":
                 re = /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/;
@@ -65,13 +68,14 @@ class Body extends Component {
             })
         }
         else {
+            text = this.validate(e);
             const loginForm = { ...this.state.loginForm, [e.target.name]: e.target.value };
-            this.setState({ loginForm }, () => {
+            this.setState({ loginForm, text }, () => {
                 console.log(this.state);
             })
         }
     }
-
+    s
 
     onAddUser = () => {
         const { signUpForm, users } = this.state;
@@ -90,7 +94,7 @@ class Body extends Component {
         });
 
         if (check.length !== 0) {
-            alert("User already exist");
+            alert("Username already exist");
             return;
         }
 
@@ -134,11 +138,17 @@ class Body extends Component {
         });
 
         if (check.length !== 0) {
+            this.setState({
+                loginForm: {
+                    username: "",
+                    password: ""
+                }
+            });
             alert("Logged in succesfully");
             return;
         }
         else {
-            alert("User does not exist!");
+            alert("Username does not exist!");
             return;
         }
     }
@@ -149,7 +159,6 @@ class Body extends Component {
             <React.Fragment>
                 <SignUp
                     inputChange={this.inputChange}
-                    text={this.state.text}
                     onAddUser={this.onAddUser}
                     f_name={this.state.signUpForm.first_name}
                     l_name={this.state.signUpForm.last_name}
@@ -163,6 +172,7 @@ class Body extends Component {
                     u_name={this.state.loginForm.username}
                     pass={this.state.loginForm.password}
                 />
+                <p className="error">{this.state.text}</p>
             </React.Fragment>
         );
     }

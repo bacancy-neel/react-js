@@ -14,18 +14,17 @@ class Login extends Component {
                     type="text"
                     placeholder="Enter user name"
                     name="username"
-                    value={this.props.u_name.value}
-                    onChange={(e) => this.props.inputChange(e, 6)}
+                    value={this.props.u_name}
+                    onChange={(e) => this.props.inputChange(e)}
                 />
                 <input
                     className="loginForm"
                     type="password"
                     placeholder="Enter password"
                     name="password"
-                    value={this.props.pass.value}
-                    onChange={(e) => this.props.inputChange(e, 6)}
+                    value={this.props.pass}
+                    onChange={(e) => this.props.inputChange(e)}
                 />
-
                 <input type="button" value="Submit" className="btn" onClick={() => this.props.onLogin()} />
             </div>
         );
