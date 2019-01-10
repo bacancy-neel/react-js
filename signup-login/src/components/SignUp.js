@@ -7,7 +7,7 @@ class SignUp extends Component {
     render() {
 
         return (
-            <div className="signup-form" >
+            <form className="signup-form" >
                 <p>Sign Up</p>
                 <input
                     className="signUpForm"
@@ -50,10 +50,12 @@ class SignUp extends Component {
                     onChange={(e) => this.props.inputChange(e)}
                 />
 
-                <input type="button" value="Submit" className="btn" onClick={() => this.props.onAddUser()} />
-            </div>
+                <input type="reset" value="Submit" className="btn" onClick={() => this.props.onAddUser()} />
+
+            </form>
         );
     }
 }
 
 export default SignUp;
+
