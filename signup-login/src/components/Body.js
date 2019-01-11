@@ -37,7 +37,7 @@ class Body extends Component {
                 (!re.test(e.target.value)) ? txt = "You must enter valid name" : txt = "";
                 break;
             case "email":
-                re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 (!re.test(e.target.value)) ? txt = "You must enter valid email" : txt = "";
                 break;
             case "username":
@@ -61,25 +61,16 @@ class Body extends Component {
     inputChange = (e) => {
         console.log("Function called!");
         let text;
-        if (e.target.className === "signUpForm") {
-            text = this.validate(e);
-            const signUpForm = { ...this.state.signUpForm, [e.target.name]: e.target.value };
-            this.setState({ signUpForm, text }, () => {
-                console.log(this.state);
-            })
-        }
-        else {
-            text = this.validate(e);
-            const loginForm = { ...this.state.loginForm, [e.target.name]: e.target.value };
-            this.setState({ loginForm, text }, () => {
-                console.log(this.state);
-            })
-        }
+        text = this.validate(e);
+        const obj = { ...this.state[e.target.className], [e.target.name]: e.target.value };
+        this.setState({ [e.target.className]: obj, text }, () => {
+            console.log(this.state);
+        })
     }
-    s
+
 
     onAddUser = () => {
-        const { signUpForm, users } = this.state;
+        let { signUpForm, users } = this.state;
 
         if (signUpForm.first_name === "" || signUpForm.last_name === "" || signUpForm.username === "" || signUpForm.email === "" || signUpForm.password === "") {
             alert("Fill all details");
@@ -99,15 +90,14 @@ class Body extends Component {
             return;
         }
 
-
-        this.state.users.push({
+        const obj = {
             "first_name": signUpForm.first_name,
             "last_name": signUpForm.last_name,
             "username": signUpForm.username,
             "email": signUpForm.email,
             "password": signUpForm.password
-
-        });
+        }
+        users = this.state.users.concat(obj);
 
         this.setState({
             users,
