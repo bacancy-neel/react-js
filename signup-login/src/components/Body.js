@@ -41,7 +41,6 @@ class Body extends Component {
                 (!re.test(e.target.value)) ? txt = "You must enter valid email" : txt = "";
                 break;
             case "username":
-                console.log("USERNAME");
                 re = /^[A-Za-z0-9_]{3,20}$/;
                 (!re.test(e.target.value)) ? txt = "You must enter valid username" : txt = "";
                 console.log(txt);
@@ -82,7 +81,7 @@ class Body extends Component {
         }
 
         let check = users.filter((user) => {
-            return user.username === signUpForm.username;
+            return (user.username === signUpForm.username);
         });
 
         if (check.length !== 0) {
