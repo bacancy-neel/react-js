@@ -6,19 +6,19 @@
   color: red;
 }
 .container{
-  width: 1000px;
+  width: 100%;
   margin-left: 460px
 }
 
 header{
-  width:1000px; 
-  float:left; 
+  width:100%; 
+  
   background: pink; 
   height: 50px;
 }
 footer {
-  width:1000px; 
-  float:left; 
+  width:100%; 
+  flex-shrink: 0;
   background: black; 
   height: 50px;
   color: #ffffff;

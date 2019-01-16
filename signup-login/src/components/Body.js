@@ -188,6 +188,7 @@ class Body extends Component {
         console.log("BODY RENDER");
         return (
             <React.Fragment>
+                <p className="error">{this.state.text}</p>
                 <SignUp
                     inputChange={this.inputChange}
                     onAddUser={this.onAddUser}
@@ -198,7 +199,7 @@ class Body extends Component {
                     onLogin={this.onLogin}
                     loginform={this.state.loginForm}
                 />
-                <p className="error">{this.state.text}</p>
+
             </React.Fragment>
         );
     }

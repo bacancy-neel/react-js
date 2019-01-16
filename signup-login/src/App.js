@@ -34,11 +34,11 @@ class App extends Component {
   render() {
     console.log("APP RENDER");
     return (
-      <div className="container">
+      <React.Fragment>
         <div className="header"><Header /></div>
         <div className="body"><Body /></div>
         <div className="footer"><Footer /></div>
-      </div>
+      </React.Fragment>
     )
   };
 }
