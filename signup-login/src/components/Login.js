@@ -63,7 +63,7 @@ class Login extends Component {
                     onChange={(e) => this.props.inputChange(e)}
                 />
                 <input
-                    className="signUpForm"
+                    className="loginForm"
                     type="radio"
                     name="gender"
                     value="male"
@@ -71,7 +71,7 @@ class Login extends Component {
                     onChange={(e) => this.props.inputChange(e)}
                 />Male
                 <input
-                    className="signUpForm"
+                    className="loginForm"
                     type="radio"
                     name="gender"
                     value="female"
@@ -79,7 +79,7 @@ class Login extends Component {
                     onChange={(e) => this.props.inputChange(e)}
                 />Female
                 <input
-                    className="signUpForm"
+                    className="loginForm"
                     type="radio"
                     name="gender"
                     value="other"
