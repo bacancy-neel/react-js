@@ -39,6 +39,12 @@ footer {
   text-align: right;
 
 } 
+select{
+  margin-top: 5%;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: lightgray;
+}
 
 input {
   width: 80%;

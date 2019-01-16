@@ -13,13 +13,15 @@ class Body extends Component {
                 username: "",
                 email: "",
                 password: "",
-                gender: "male"
+                gender: "male",
+                degree: "BE"
             },
             users: [],
             loginForm: {
                 username: "",
                 password: "",
-                gender: "male"
+                gender: "male",
+                degree: "BE"
             },
             text: ""
         };
@@ -122,7 +124,8 @@ class Body extends Component {
             "username": signUpForm.username,
             "email": signUpForm.email,
             "password": signUpForm.password,
-            "gender": signUpForm.gender
+            "gender": signUpForm.gender,
+            "degree": signUpForm.degree
         }
         users = this.state.users.concat(obj);
 
@@ -131,14 +134,17 @@ class Body extends Component {
             loginForm: {
                 username: obj.first_name,
                 password: obj.password,
-                gender: obj.gender
+                gender: obj.gender,
+                degree: obj.degree
             },
             signUpForm: {
                 first_name: "",
                 last_name: "",
                 username: "",
                 email: "",
-                password: ""
+                password: "",
+                gender: "male",
+                degree: "BE"
             }
         }, () => {
             alert("Submitted succesfully!");
@@ -163,7 +169,9 @@ class Body extends Component {
             this.setState({
                 loginForm: {
                     username: "",
-                    password: ""
+                    password: "",
+                    gender: "male",
+                    degree: "BE"
                 }
             });
             alert("Logged in succesfully");

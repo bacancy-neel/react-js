@@ -9,7 +9,8 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            gender: "male"
+            gender: "male",
+            degree: "BE"
         }
     }
 
@@ -30,6 +31,7 @@ class Login extends Component {
         nextState.username = nextProps.loginform.username;
         nextState.password = nextProps.loginform.password;
         nextState.gender = nextProps.loginform.gender;
+        nextState.degree = nextProps.loginform.degree;
         console.log("LOGIN WILL UPDATE", nextProps, nextState);
     }
 
@@ -85,7 +87,14 @@ class Login extends Component {
                     value="other"
                     checked={this.state.gender === "other"}
                     onChange={(e) => this.props.inputChange(e)}
-                />Other
+                />Other<br />
+                Degree:
+                <select name="degree" className="loginForm" onChange={(e) => this.props.inputChange(e)}>
+                    <option value="BE" selected={this.state.degree === "BE"}>BE</option>
+                    <option value="ME" selected={this.state.degree === "ME"}>ME</option>
+                    <option value="BCA" selected={this.state.degree === "BCA"}>BCA</option>
+                    <option value="MCA" selected={this.state.degree === "MCA"}>MCA</option>
+                </select>
                 <input type="button" value="Submit" className="btn" onClick={() => this.props.onLogin()} />
             </div>
         );
