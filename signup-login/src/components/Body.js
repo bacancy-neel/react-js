@@ -12,12 +12,14 @@ class Body extends Component {
                 last_name: "",
                 username: "",
                 email: "",
-                password: ""
+                password: "",
+                gender: "male"
             },
             users: [],
             loginForm: {
                 username: "",
-                password: ""
+                password: "",
+                gender: "male"
             },
             text: ""
         };
@@ -27,8 +29,33 @@ class Body extends Component {
         this.validate = this.validate.bind(this);
     }
 
+    componentWillMount() {
+        console.log("BODY WILL MOUNT");
+    }
+
+    componentDidMount() {
+        console.log("BODY DID MOUNT");
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("BODY SHOULD UPDATE", nextProps, nextState);
+        return true;
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log("BODY WILL UPDATE", nextProps, nextState);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log("BODY DID UPDATE", prevProps, prevState);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log("BODY WILL RECEIVE PROPS", nextProps);
+    }
+
     validate = (e) => {
-        console.log("VALIDATING");
+        //console.log("VALIDATING");
         let re, txt;
         switch (e.target.name) {
             case "first_name":
@@ -43,13 +70,13 @@ class Body extends Component {
             case "username":
                 re = /^[A-Za-z0-9_]{3,20}$/;
                 (!re.test(e.target.value)) ? txt = "You must enter valid username" : txt = "";
-                console.log(txt);
                 break;
             case "password":
                 re = /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/;
                 (!re.test(e.target.value)) ? txt = "You must enter valid password" : txt = "";
                 break;
             default:
+                txt = "";
                 break;
         }
         if (txt !== "") e.target.style.borderColor = "red";
@@ -58,12 +85,12 @@ class Body extends Component {
     }
 
     inputChange = (e) => {
-        console.log("Function called!");
+        //console.log("Function called!");
         let text;
         text = this.validate(e);
-        const obj = { ...this.state[e.target.className], [e.target.name]: e.target.value };
+        let obj = { ...this.state[e.target.className], [e.target.name]: e.target.value };
         this.setState({ [e.target.className]: obj, text }, () => {
-            console.log(this.state);
+            // console.log(this.state);
         })
     }
 
@@ -94,23 +121,28 @@ class Body extends Component {
             "last_name": signUpForm.last_name,
             "username": signUpForm.username,
             "email": signUpForm.email,
-            "password": signUpForm.password
+            "password": signUpForm.password,
+            "gender": signUpForm.gender
         }
         users = this.state.users.concat(obj);
 
         this.setState({
             users,
+            loginForm: {
+                username: obj.first_name,
+                password: obj.password,
+                gender: obj.gender
+            },
             signUpForm: {
                 first_name: "",
                 last_name: "",
                 username: "",
                 email: "",
                 password: ""
-
             }
         }, () => {
             alert("Submitted succesfully!");
-            console.log(this.state);
+            //console.log(this.state);
         });
 
     }
@@ -145,22 +177,18 @@ class Body extends Component {
 
 
     render() {
+        console.log("BODY RENDER");
         return (
             <React.Fragment>
                 <SignUp
                     inputChange={this.inputChange}
                     onAddUser={this.onAddUser}
-                    f_name={this.state.signUpForm.first_name}
-                    l_name={this.state.signUpForm.last_name}
-                    u_name={this.state.signUpForm.username}
-                    email={this.state.signUpForm.email}
-                    pass={this.state.signUpForm.password}
+                    signupform={this.state.signUpForm}
                 />
                 <Login
                     inputChange={this.inputChange}
                     onLogin={this.onLogin}
-                    u_name={this.state.loginForm.username}
-                    pass={this.state.loginForm.password}
+                    loginform={this.state.loginForm}
                 />
                 <p className="error">{this.state.text}</p>
             </React.Fragment>
