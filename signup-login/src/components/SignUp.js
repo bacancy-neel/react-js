@@ -75,6 +75,7 @@ class SignUp extends Component {
                     value={this.props.signupform.password}
                     onChange={(e) => this.props.inputChange(e)}
                 />
+                Gender:<br />
                 <input
                     className="signUpForm"
                     type="radio"
