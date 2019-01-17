@@ -15,6 +15,12 @@ class Login extends Component {
     }
 
     componentWillMount() {
+        this.setState({
+            username: this.props.loginform.username,
+            password: this.props.loginform.password,
+            gender: this.props.loginform.gender,
+            degree: this.props.loginform.degree
+        });
         console.log("LOGIN WILL MOUNT");
     }
 
@@ -28,10 +34,6 @@ class Login extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-        nextState.username = nextProps.loginform.username;
-        nextState.password = nextProps.loginform.password;
-        nextState.gender = nextProps.loginform.gender;
-        nextState.degree = nextProps.loginform.degree;
         console.log("LOGIN WILL UPDATE", nextProps, nextState);
     }
 

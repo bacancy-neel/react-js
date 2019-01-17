@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink, BrowserRouter, Switch, Route } from 'react-router-dom';
 import SignUp from './SignUp';
 import Login from './Login';
 
@@ -30,6 +31,7 @@ class Body extends Component {
         this.onLogin = this.onLogin.bind(this);
         this.validate = this.validate.bind(this);
     }
+
 
     componentWillMount() {
         console.log("BODY WILL MOUNT");
@@ -187,20 +189,42 @@ class Body extends Component {
     render() {
         console.log("BODY RENDER");
         return (
-            <React.Fragment>
-                <p className="error">{this.state.text}</p>
-                <SignUp
-                    inputChange={this.inputChange}
-                    onAddUser={this.onAddUser}
-                    signupform={this.state.signUpForm}
-                />
-                <Login
-                    inputChange={this.inputChange}
-                    onLogin={this.onLogin}
-                    loginform={this.state.loginForm}
-                />
+            <BrowserRouter>
+                <React.Fragment>
+                    <p className="error">{this.state.text}</p>
+                    <div className="nav-box">
+                        <label>Click here to Sign Up</label><br />
+                        <NavLink activeClassName="active" to="/sign-up">Sign Up</NavLink><br /><br />
+                        <label>Click here to Log In</label><br />
+                        <NavLink activeClassName="active" to="/log-in">Log In</NavLink>
+                    </div>
+                    <Switch>
+                        <Route
+                            path='/sign-up'
+                            render={(props) => <SignUp {...props} inputChange={this.inputChange}
+                                onAddUser={this.onAddUser}
+                                signupform={this.state.signUpForm} />}
+                        />
+                        <Route
+                            path='/log-in'
+                            render={(props) => <Login {...props} inputChange={this.inputChange}
+                                onLogin={this.onLogin}
+                                loginform={this.state.loginForm} />}
+                        />
+                    </Switch>
+                    {/*<SignUp
+                        inputChange={this.inputChange}
+                        onAddUser={this.onAddUser}
+                        signupform={this.state.signUpForm}
+                    />
+                    <Login
+                        inputChange={this.inputChange}
+                        onLogin={this.onLogin}
+                        loginform={this.state.loginForm}
+                    />*/}
+                </React.Fragment>
+            </BrowserRouter>
 
-            </React.Fragment>
         );
     }
 }

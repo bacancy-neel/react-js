@@ -102,10 +102,10 @@ class SignUp extends Component {
                 />Other<br />
                 Degree:
                 <select name="degree" className="signUpForm" onChange={(e) => this.props.inputChange(e)}>
-                    <option value="BE" selected={this.props.signupform.degree === "BE"}>BE</option>
-                    <option value="ME" selected={this.props.signupform.degree === "ME"}>ME</option>
-                    <option value="BCA" selected={this.props.signupform.degree === "BCA"}>BCA</option>
-                    <option value="MCA" selected={this.props.signupform.degree === "MCA"}>MCA</option>
+                    <option value="BE" defaultValue={this.props.signupform.degree === "BE"}>BE</option>
+                    <option value="ME" defaultValue={this.props.signupform.degree === "ME"}>ME</option>
+                    <option value="BCA" defaultValue={this.props.signupform.degree === "BCA"}>BCA</option>
+                    <option value="MCA" defaultValue={this.props.signupform.degree === "MCA"}>MCA</option>
                 </select>
 
                 <input type="button" formMethod="post" value="Submit" className="btn" onClick={() => this.props.onAddUser()} />
