@@ -191,12 +191,12 @@ class Body extends Component {
         return (
             <BrowserRouter>
                 <React.Fragment>
-                    <p className="error">{this.state.text}</p>
                     <div className="nav-box">
                         <label>Click here to Sign Up</label><br />
                         <NavLink activeClassName="active" to="/sign-up">Sign Up</NavLink><br /><br />
                         <label>Click here to Log In</label><br />
                         <NavLink activeClassName="active" to="/log-in">Log In</NavLink>
+                        <p className="error">{this.state.text}</p>
                     </div>
                     <Switch>
                         <Route

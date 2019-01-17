@@ -7,7 +7,6 @@
 }
 .container{
   width: 100%;
-  margin-left: 460px
 }
 
 .nav-box{
@@ -15,7 +14,7 @@
     display: inline-block;
     width: 20%;
     margin: 5% 40% 1% 40%;
-    height: auto;
+    height: 70px;
     border: 2px solid grey;
     border-radius: 10px;
     padding: 20px;
