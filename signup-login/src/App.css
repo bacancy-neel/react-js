@@ -2,7 +2,7 @@
  text-align: center;
 }
 
-.error, .active{
+.error{
   color: red;
 }
 .container{
@@ -21,12 +21,38 @@
     padding-bottom: 70px;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
 header{
   width:100%; 
-  position: fixed;
-  top: 0;
-  background: pink; 
   height: 50px;
+  
 }
 footer {
   width:100%; 
@@ -42,7 +68,7 @@ footer {
   padding: 10px;
 }
 
-[type="radio"]{
+input[type="radio"]{
   display: inline-block;
   width: 15%;
   height: 20px;
