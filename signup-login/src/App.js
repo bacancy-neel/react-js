@@ -23,8 +23,8 @@ class App extends Component {
     console.log("APP WILL UPDATE", nextProps, nextState);
   }
 
-  componentDidUpdate(nextProps, nextState) {
-    console.log("APP DID UPDATE", nextProps, nextState);
+  componentDidUpdate(prevProps, prevState) {
+    console.log("APP DID UPDATE", prevProps, prevState);
   }
 
   componentWillReceiveProps(nextProps) {

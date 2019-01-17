@@ -42,8 +42,8 @@ class Login extends Component {
         console.log("LOGIN WILL UPDATE", nextProps, nextState);
     }
 
-    componentDidUpdate(nextProps, nextState) {
-        console.log("LOGIN DID UPDATE", nextProps, nextState);
+    componentDidUpdate(prevProps, prevState) {
+        console.log("LOGIN DID UPDATE", prevProps, prevState);
     }
 
     componentWillReceiveProps(nextProps) {

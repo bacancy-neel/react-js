@@ -22,8 +22,8 @@ class SignUp extends Component {
         console.log("SIGNUP WILL UPDATE", nextProps, nextState);
     }
 
-    componentDidUpdate(nextProps, nextState) {
-        console.log("SIGNUP DID UPDATE", nextProps, nextState);
+    componentDidUpdate(prevProps, prevState) {
+        console.log("SIGNUP DID UPDATE", prevProps, prevState);
     }
 
     componentWillReceiveProps(nextProps) {
