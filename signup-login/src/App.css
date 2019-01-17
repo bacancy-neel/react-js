@@ -14,8 +14,8 @@
     background-color: lavender;
     display: inline-block;
     width: 20%;
-    margin: 1% 40% 0% 40%;
-    height: 70px;
+    margin: 5% 40% 1% 40%;
+    height: auto;
     border: 2px solid grey;
     border-radius: 10px;
     padding: 20px;
@@ -24,7 +24,8 @@
 
 header{
   width:100%; 
-  
+  position: fixed;
+  top: 0;
   background: pink; 
   height: 50px;
 }
