@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import About from './About';
+import Blogs from './Blogs';
 import Header from './Header';
 import Home from './Home';
-import Blogs from './Blogs';
-import About from './About';
 
 class Routing extends Component {
     render() {
