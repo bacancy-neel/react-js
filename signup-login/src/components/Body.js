@@ -33,7 +33,6 @@ class Body extends Component {
         this.validate = this.validate.bind(this);
     }
 
-
     componentWillMount() {
         console.log("BODY WILL MOUNT");
     }
@@ -58,7 +57,6 @@ class Body extends Component {
     componentWillReceiveProps(nextProps) {
         console.log("BODY WILL RECEIVE PROPS", nextProps);
     }
-
     validate = (e) => {
         //console.log("VALIDATING");
         let re, txt;
@@ -81,7 +79,7 @@ class Body extends Component {
                 (!re.test(e.target.value)) ? txt = "You must enter valid password" : txt = "";
                 break;
             default:
-                txt = "";
+                txt = this.state.text;
                 break;
         }
         if (txt !== "") e.target.style.borderColor = "red";
@@ -91,8 +89,7 @@ class Body extends Component {
 
     inputChange = (e) => {
         //console.log("Function called!");
-        let text;
-        text = this.validate(e);
+        let text = this.validate(e);
         let obj = { ...this.state[e.target.className], [e.target.name]: e.target.value };
         this.setState({ [e.target.className]: obj, text }, () => {
             // console.log(this.state);
@@ -135,7 +132,7 @@ class Body extends Component {
         this.setState({
             users,
             loginForm: {
-                username: obj.first_name,
+                username: obj.username,
                 password: obj.password,
                 gender: obj.gender,
                 degree: obj.degree
@@ -148,7 +145,8 @@ class Body extends Component {
                 password: "",
                 gender: "male",
                 degree: "BE"
-            }
+            },
+            text: ""
         }, () => {
             alert("Submitted succesfully!");
             //console.log(this.state);
@@ -175,7 +173,8 @@ class Body extends Component {
                     password: "",
                     gender: "male",
                     degree: "BE"
-                }
+                },
+                text: ""
             });
             alert("Logged in succesfully");
             return;

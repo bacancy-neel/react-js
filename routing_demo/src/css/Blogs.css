@@ -1,0 +1,40 @@
+.wrap{
+    margin-top:100px;
+}
+.sidebar{
+    width:200px;
+    top: 47px; 
+    bottom: 0px;
+    height: 100%;
+    position: fixed;
+    background-color: #f1f1f1;
+}
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    font-weight: bolder;
+    text-decoration: underline;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    font-weight: bolder;
+    color: white;
+  }
+.sidebar,.MyBlog,.FashionBlog,.FoodBlog,.ArtBlog,.wrap{
+    height:100%
+}
+.MyBlog,.FashionBlog,.FoodBlog,.ArtBlog{
+    width: 85%;
+    margin: 100px 250px;
+}
+.sidebar{left:0}
+
+.w3-card-4,.w3-hover-shadow:hover{box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)}
+.w3-margin{margin:16px!important}
+.w3-white,.w3-hover-white:hover{color:#000!important;background-color:#fff!important}
