@@ -6,9 +6,10 @@ input[type=text] {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    text-align: left;
   }
   
-  input[type=submit],[type=reset] {
+  input[type=button],[type=reset] {
     width: 10%;
     background-color: darkgrey;
     color: white;
@@ -19,7 +20,7 @@ input[type=text] {
     cursor: pointer;
   }
   
-  input[type=submit]:hover,[type=reset]:hover{
+  input[type=button]:hover,[type=reset]:hover{
       background-color: green;
   }
   form {

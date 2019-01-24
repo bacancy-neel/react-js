@@ -48,12 +48,14 @@ h1,p {
   border-right: solid;
   border-bottom: solid;
   border-width: thin;
-  padding: 5px 0 0 10px;
+  padding: 5px 0 5px 10px;
 }
-
+.li{
+  margin-left: 10%;
+}
 ul {
   list-style-type: none;
-  margin-left: 10%;
+  
   padding: 0;
   overflow: hidden;
   

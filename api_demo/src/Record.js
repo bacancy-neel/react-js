@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
 class Record extends Component {
@@ -88,7 +88,11 @@ class Record extends Component {
                                 <img src={user.avatar} alt="avatar" />
                             </div>
                             <div className="cell">
-                                <button>Edit</button><button>Delete</button>
+                                <ul>
+                                    <li><NavLink activeClassName="active" exact to="/edit-user">Edit</NavLink></li>
+                                    <li> | </li>
+                                    <li><NavLink activeClassName="active" exact to="/delete-user">Delete</NavLink></li>
+                                </ul>
                             </div>
                         </div>
                     )}
