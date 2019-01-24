@@ -1,49 +1,57 @@
 import React, { Component } from 'react';
 
-import Pagination from "react-js-pagination";
+import axios from 'axios';
 
 class Record extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pageChange: false,
+            isPageChanging: false,
             isLoding: false,
             users: [],
-            page: (props.match.params.id) || 1,
+            totalPage: 1,
+            page: 1,
             error: null
         }
-        this.getUsersData = this.getUsersData.bind(this);
-        this.getUsersData = this.getUsersData.bind(this);
+        this.paginationDisplay = this.paginationDisplay.bind(this);
+        this.getUserData = this.getUserData.bind(this);
     }
-    getUsersData() {
-        fetch(`https://reqres.in/api/users?page=${this.state.page}`)
+    pageChange(e) {
+        this.setState({ isPageChanging: true });
+        this.setState({ page: e.target.value }, () => this.getUserData());
+
+    }
+    paginationDisplay() {
+        let obj = [];
+        for (let i = 1; i <= this.state.totalPage; i++) {
+            obj.push(
+                <button value={i} key={`btn${i}`} className={(Number(this.state.page) === i) ? "btn active" : "btn"} onClick={(e) => this.pageChange(e)}>{i}</button >
+            );
+        }
+        return obj;
+    }
+    getUserData() {
+        axios.get(`https://reqres.in/api/users?page=${this.state.page}`)
             // .then(rs => {
             //   return rs.json();
             // })
             .then(rs => {
-                if (rs.ok) {
-                    console.log("response:::", rs.clone().json());
-                    return rs.json();
-                }
-                else {
-                    throw new Error("Something went wrong");
-                }
+
+                console.log("response:::", rs);
+
+                return rs;
             })
-            .then(data => this.setState({ users: data.data, isLoding: false, pageChange: false }))
-            .catch(error => this.setState({ error: error, isLoding: false, pageChange: false }))
-    }
-    handlePageChange(pageNum) {
-        this.setState({ page: pageNum });
-        this.getUsersData();
+            .then(data => this.setState({ users: data.data.data, totalPage: data.data.total_pages, isLoding: false, isPageChanging: false }))
+            .catch(error => this.setState({ error: error, isLoding: false, isPageChanging: false }))
     }
     componentDidMount() {
         this.setState({ isLoding: true });
-        this.getUsersData();
+        this.getUserData();
     }
 
     render() {
         const { users, error, isLoding } = this.state;
-
+        console.log("RENDER");
         if (error) {
             return <p>{error.message}</p>
         }
@@ -68,8 +76,8 @@ class Record extends Component {
                             <b>Action</b>
                         </div>
                     </div>
-                    {users.map(user =>
-                        <div className="row">
+                    {users.map((user, i) =>
+                        <div className="row" key={`user${++i}`}>
                             <div className="cell">
                                 {user.first_name}
                             </div>
@@ -86,14 +94,8 @@ class Record extends Component {
                     )}
                 </div>
                 <div className="pagination">
-                    <Pagination
-                        activePage={this.state.activePage}
-                        totalItemsCount={12}
-                        pageRangeDisplayed={4}
-                        onChange={this.handlePageChange}
-                    />
-                </div>
-
+                    {this.paginationDisplay()}
+                </div>{(this.state.isPageChanging) ? <p>Fetching data...</p> : <p></p>}
             </React.Fragment>
         );
     }

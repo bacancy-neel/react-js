@@ -3,8 +3,8 @@
 }
 img{
   height: 75px;
-  
 }
+
 button {
   background-color: #555555; 
   border: none;
@@ -19,27 +19,36 @@ button {
   border-radius: 20px;
 }
 button:hover:not(active){
+  background-color:gray;
+}
+.btn.active{
   background-color: #4CAF50;
 }
 h1,p {
   margin-left: 10%;
   text-align: left;
+  display: block;
+  padding-top: 10px;
 }
 .table {
-  width: 60%;
+  width: 80%;
   margin: 5% 0% 5% 10%;
-  display:block;
-  border: 1px solid black;
+  display: table;
+  border-top: solid;
+  border-left: solid;
+  border-width: thin;
 }
 .row { 
-  display:block;
-  border-bottom: 1px solid black;
+  display: table-row;
 }
 .cell {
+  width: 20%;
   text-align: left;
-  padding: 5px;
-  display: inline-block;
-  width: 15%;
+  display: table-cell;
+  border-right: solid;
+  border-bottom: solid;
+  border-width: thin;
+  padding: 5px 0 0 10px;
 }
 
 ul {
@@ -58,16 +67,16 @@ li a {
   text-align: center;
   padding: 10px;
   display: inline;
+  color: grey;
   text-decoration: none;
 }
 
 li a:hover:not(.active) {
-  font-weight: bolder;
+  color: black;
 }
 
 li a.active {
-  font-weight: bolder;
-  text-decoration: underline;
+  color: black;
 }
 
 
@@ -94,3 +103,4 @@ li a.active {
   background-color: #ddd;
   border-radius: 5px;
 }
+
