@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import './AddRecord.css'
 
 
-class EditUsre extends Component {
 
+class EditUsre extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "",
+            job: ""
+        }
+    }
+    componentDidMount() {
+        axios.get(`https://reqres.in/api/users/${this.props.match.params.id}`)
+            .then(rs => {
+                console.log("res...", rs);
+                return rs.data;
+            })
+            .then(data => this.setState({ name: data.name, job: data.job }))
+            .catch(err => {
+                console.log(err);
+            })
+    }
     render() {
         return (
             <form className="edit-record">

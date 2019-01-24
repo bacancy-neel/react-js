@@ -22,7 +22,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Record} />
             <Route exact path="/add-record" component={AddRecord} />
-            <Route exact path="/edit-user" component={EditUser} />
+            <Route exact path="/edit-user/:id" component={EditUser} />
           </Switch>
         </React.Fragment>
       </BrowserRouter>

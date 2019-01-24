@@ -38,7 +38,6 @@ class Record extends Component {
             .then(rs => {
 
                 console.log("response:::", rs);
-
                 return rs;
             })
             .then(data => this.setState({ users: data.data.data, totalPage: data.data.total_pages, isLoding: false, isPageChanging: false }))
@@ -77,7 +76,7 @@ class Record extends Component {
                         </div>
                     </div>
                     {users.map((user, i) =>
-                        <div className="row" key={`user${++i}`}>
+                        <div className="row" key={`user${i + 1}`}>
                             <div className="cell">
                                 {user.first_name}
                             </div>
@@ -89,7 +88,7 @@ class Record extends Component {
                             </div>
                             <div className="cell">
                                 <ul>
-                                    <li><NavLink activeClassName="active" exact to="/edit-user">Edit</NavLink></li>
+                                    <li><NavLink activeClassName="active" key={user.id} exact to={`/edit-user/${user.id}`}>Edit</NavLink></li>
                                     <li> | </li>
                                     <li><NavLink activeClassName="active" exact to="/delete-user">Delete</NavLink></li>
                                 </ul>
