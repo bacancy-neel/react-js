@@ -1,32 +1,96 @@
-.App {
+*{
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+img{
+  height: 75px;
+  
+}
+button {
+  background-color: #555555; 
+  border: none;
+  color: whitesmoke;
+  padding: 7px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+button:hover:not(active){
+  background-color: #4CAF50;
+}
+h1,p {
+  margin-left: 10%;
+  text-align: left;
+}
+.table {
+  width: 60%;
+  margin: 5% 0% 5% 10%;
+  display:block;
+  border: 1px solid black;
+}
+.row { 
+  display:block;
+  border-bottom: 1px solid black;
+}
+.cell {
+  text-align: left;
+  padding: 5px;
+  display: inline-block;
+  width: 15%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+ul {
+  list-style-type: none;
+  margin-left: 10%;
+  padding: 0;
+  overflow: hidden;
+  
+}
+
+li {
+  float: left;
+}
+
+li a {
+  text-align: center;
+  padding: 10px;
+  display: inline;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  font-weight: bolder;
+}
+
+li a.active {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+
+.pagination {
+  margin-left: 10%;
+  float: left;
+ 
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
   color: white;
+  border-radius: 5px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
 }
