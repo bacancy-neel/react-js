@@ -1,5 +1,5 @@
 *{
-  text-align: center;
+  text-align: left;
 }
 img{
   height: 75px;
@@ -26,7 +26,6 @@ button:hover:not(active){
 }
 h1,p {
   margin-left: 10%;
-  text-align: left;
   display: block;
   padding-top: 10px;
 }
@@ -43,7 +42,6 @@ h1,p {
 }
 .cell {
   width: 20%;
-  text-align: left;
   display: table-cell;
   border-right: solid;
   border-bottom: solid;
@@ -63,11 +61,11 @@ ul {
 
 li {
   float: left;
+  padding: 10px 10px 10px 0px;
 }
 
 li a {
   text-align: center;
-  padding: 10px;
   display: inline;
   color: grey;
   text-decoration: none;
