@@ -42,6 +42,7 @@ h1,p {
 }
 .cell {
   width: 20%;
+  height: 50px;
   display: table-cell;
   border-right: solid;
   border-bottom: solid;

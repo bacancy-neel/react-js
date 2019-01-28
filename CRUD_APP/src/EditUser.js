@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import API from './API';
 
 import './AddRecord.css'
 
@@ -23,7 +23,7 @@ class EditUser extends Component {
   componentDidMount() {
     if (this.state.edit) {
       this.setState({ loading: true });
-      axios.get(`https://reqres.in/api/users/${this.props.match.params.id}`)
+      API.get(`users/${this.props.match.params.id}`)
         .then(rs => {
           console.log("res...", rs);
           return rs.data;
@@ -39,27 +39,28 @@ class EditUser extends Component {
   handleClick() {
     this.setState({ loading: true });
     if (this.state.edit) {
-      axios.put(`https://reqres.in/api/users/${this.props.match.params.id}`, {
+      API.put(`users/${this.props.match.params.id}`, {
         name: this.state.name,
         job: this.state.job
       })
         .then(rs => {
           console.log("res...", rs);
-          this.setState({ loading: false });
+          return rs.data;
         })
+        .then(() => this.setState({ loading: false }))
         .catch(err => {
           console.log(err);
-        })
+        });
     }
     else {
-      axios.post('https://reqres.in/api/users', {
+      API.post('users', {
         name: this.state.name,
         job: this.state.job
       })
         .then(function (response) {
           console.log(response);
-          this.setState({ loading: false });
         })
+        .then(() => this.setState({ loading: false }))
         .catch(function (error) {
           console.log(error);
         });

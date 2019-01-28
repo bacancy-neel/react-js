@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import API from './API';
 
 class Record extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class Record extends Component {
   }
 
   getUserData() {
-    axios.get(`https://reqres.in/api/users?page=${this.state.page}`)
+    API.get(`users?page=${this.state.page}`)
       .then(rs => {
         console.log("response:::", rs);
         return rs;

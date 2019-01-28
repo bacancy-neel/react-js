@@ -28,7 +28,7 @@ input[type=text] {
     width: 50%;
     border-radius: 5px;
     margin: 1% 0% 5% 10%;
-    padding: 20px;
+    padding: 20px 0px;
     text-align: left;
   }
 
