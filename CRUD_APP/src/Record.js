@@ -15,6 +15,7 @@ class Record extends Component {
     }
     this.paginationDisplay = this.paginationDisplay.bind(this);
     this.getUserData = this.getUserData.bind(this);
+    this.pageChange = this.pageChange.bind(this);
   }
 
   pageChange(e) {
