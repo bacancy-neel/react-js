@@ -23,10 +23,8 @@ class Record extends Component {
   }
 
   paginationDisplay() {
-    let obj = Array(this.state.totalPage).fill(0).map((btn, i) => btn = btn + i + 1);
-
-    return obj.map((btn, i) =>
-      <button value={i + 1} key={`btn${i + 1}`} className={(Number(this.state.page) === i + 1) ? "btn active" : "btn"} onClick={(e) => this.pageChange(e)}>{btn}</button >
+    return Array(this.state.totalPage).fill(0).map((btn, i) =>
+      <button value={i + 1} key={`btn${i + 1}`} className={(Number(this.state.page) === i + 1) ? "btn active" : "btn"} onClick={(e) => this.pageChange(e)}>{btn + i + 1}</button >
     );
   }
 
