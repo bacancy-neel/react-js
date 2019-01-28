@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
 import './App.css'
 import Record from './Record';
-import AddRecord from './AddRecord';
 import EditUser from './EditUser';
+import Delete from './Delete';
 
 class App extends Component {
 
@@ -21,8 +21,9 @@ class App extends Component {
           </div>
           <Switch>
             <Route exact path="/" component={Record} />
-            <Route exact path="/add-record" component={AddRecord} />
-            <Route exact path="/edit-user/:id" component={EditUser} />
+            <Route exact path="/add-record" component={EditUser} />
+            <Route exact path="/edit-user/:id" render={(props) => <EditUser {...props} edit="true" />} />
+            <Route exact path="/delete-user" component={Delete} />
           </Switch>
         </React.Fragment>
       </BrowserRouter>

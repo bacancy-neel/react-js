@@ -30,3 +30,8 @@ input[type=text] {
     padding: 20px;
     text-align: left;
   }
+
+  .row-form{
+    text-align: left;
+    margin-top: 20px;
+  }
