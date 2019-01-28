@@ -17,6 +17,7 @@ class EditUser extends Component {
     }
     this.handleClick = this.handleClick.bind(this);
     this.inputChange = this.inputChange.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   componentDidMount() {
@@ -67,6 +68,10 @@ class EditUser extends Component {
     }
   }
 
+  handleReset() {
+    this.setState({ name: "", job: "" });
+  }
+
   inputChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -89,8 +94,8 @@ class EditUser extends Component {
           <img src={this.state.avatar} alt="img" />
         </div> : <div></div>}
 
-        <input type="button" value={(this.state.loading) ? "Loading..." : "Submit"} onClick={this.handleClick}></input>
-        <input type="reset" value="Cancel"></input>
+        <input type="button" value={(this.state.loading) ? "Please wait..." : "Submit"} onClick={this.handleClick}></input>
+        <input type="reset" value="Cancel" onClick={this.handleReset}></input>
       </form>
     );
   }

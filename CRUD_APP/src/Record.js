@@ -16,11 +16,12 @@ class Record extends Component {
     this.paginationDisplay = this.paginationDisplay.bind(this);
     this.getUserData = this.getUserData.bind(this);
   }
+
   pageChange(e) {
     this.setState({ isPageChanging: true });
     this.setState({ page: e.target.value }, () => this.getUserData());
-
   }
+
   paginationDisplay() {
     let obj = Array(this.state.totalPage).fill(0).map((btn, i) => btn = btn + i + 1);
 
@@ -31,17 +32,14 @@ class Record extends Component {
 
   getUserData() {
     axios.get(`https://reqres.in/api/users?page=${this.state.page}`)
-      // .then(rs => {
-      //   return rs.json();
-      // })
       .then(rs => {
-
         console.log("response:::", rs);
         return rs;
       })
       .then(data => this.setState({ users: data.data.data, totalPage: data.data.total_pages, isLoding: false, isPageChanging: false }))
       .catch(error => this.setState({ error: error, isLoding: false, isPageChanging: false }))
   }
+
   componentDidMount() {
     this.setState({ isLoding: true });
     this.getUserData();

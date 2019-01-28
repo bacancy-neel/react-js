@@ -10,7 +10,7 @@ input[type=text] {
   }
   
   input[type=button],[type=reset] {
-    width: 10%;
+    width: auto;
     background-color: darkgrey;
     color:black;
     font-weight: bolder;
