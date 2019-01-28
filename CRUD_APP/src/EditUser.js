@@ -84,7 +84,7 @@ class EditUser extends Component {
           <label>Job:</label><br />
           <input type="text" placeholder="Your job..." name="job" value={this.state.job} onChange={(e) => this.inputChange(e)}></input>
         </div>
-        {(this.state.edit) ? <div className="row-form">
+        {(this.state.edit && this.state.avatar) ? <div className="row-form">
           <label>Avatar:</label><br />
           <img src={this.state.avatar} alt="img" />
         </div> : <div></div>}
