@@ -12,6 +12,7 @@ class EditUser extends Component {
       name: "",
       job: "",
       avatar: "",
+      loading: false,
       edit: this.props.edit || false
     }
     this.handleClick = this.handleClick.bind(this);
@@ -20,12 +21,13 @@ class EditUser extends Component {
 
   componentDidMount() {
     if (this.state.edit) {
+      this.setState({ loading: true });
       axios.get(`https://reqres.in/api/users/${this.props.match.params.id}`)
         .then(rs => {
           console.log("res...", rs);
           return rs.data;
         })
-        .then(data => this.setState({ name: data.data.first_name, job: data.data.last_name, avatar: data.data.avatar }))
+        .then(data => this.setState({ name: data.data.first_name, job: data.data.last_name, avatar: data.data.avatar, loading: false }))
         .catch(err => {
           console.log(err);
         })
@@ -34,6 +36,7 @@ class EditUser extends Component {
   }
 
   handleClick() {
+    this.setState({ loading: true });
     if (this.state.edit) {
       axios.put(`https://reqres.in/api/users/${this.props.match.params.id}`, {
         name: this.state.name,
@@ -41,6 +44,7 @@ class EditUser extends Component {
       })
         .then(rs => {
           console.log("res...", rs);
+          this.setState({ loading: false });
         })
         .catch(err => {
           console.log(err);
@@ -53,6 +57,7 @@ class EditUser extends Component {
       })
         .then(function (response) {
           console.log(response);
+          this.setState({ loading: false });
         })
         .catch(function (error) {
           console.log(error);
@@ -84,7 +89,7 @@ class EditUser extends Component {
           <img src={this.state.avatar} alt="img" />
         </div> : <div></div>}
 
-        <input type="button" value="Submit" onClick={this.handleClick}></input>
+        <input type="button" value={(this.state.loading) ? "Loading..." : "Submit"} onClick={this.handleClick}></input>
         <input type="reset" value="Cancel"></input>
       </form>
     );
