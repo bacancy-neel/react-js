@@ -22,14 +22,12 @@ class Record extends Component {
 
   }
   paginationDisplay() {
-    let obj = [];
-    for (let i = 1; i <= this.state.totalPage; i++) {
-      obj.push(
-        <button value={i} key={`btn${i}`} className={(Number(this.state.page) === i) ? "btn active" : "btn"} onClick={(e) => this.pageChange(e)}>{i}</button >
-      );
-    }
-    return obj;
+    let obj = Array(this.state.totalPage).fill(0).map((btn, i) => btn = btn + i + 1);
+    return obj.map((btn, i) =>
+      <button value={i + 1} key={`btn${i + 1}`} className={(Number(this.state.page) === i + 1) ? "btn active" : "btn"} onClick={(e) => this.pageChange(e)}>{btn}</button >
+    );
   }
+
   getUserData() {
     axios.get(`https://reqres.in/api/users?page=${this.state.page}`)
       // .then(rs => {
