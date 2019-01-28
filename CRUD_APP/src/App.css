@@ -8,6 +8,7 @@ img{
 button {
   background-color: #555555; 
   border: none;
+  height: 45px;
   color: whitesmoke;
   padding: 7px 16px;
   text-align: center;
@@ -16,7 +17,7 @@ button {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 button:hover:not(active){
   background-color:gray;
@@ -31,7 +32,7 @@ h1,p {
 }
 .table {
   width: 80%;
-  margin: 5% 0% 5% 10%;
+  margin: 5% 0% 1% 10%;
   display: table;
   border-top: solid;
   border-left: solid;
