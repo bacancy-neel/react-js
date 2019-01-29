@@ -93,6 +93,7 @@ class Record extends Component {
               <b>Action</b>
             </div>
           </div>
+
           {users.map((user, i) =>
             <div className="row" key={`user${i + 1}`}>
               <div className="cell">
@@ -119,6 +120,7 @@ class Record extends Component {
               </div>
             </div>
           )}
+
         </div>
         <div className="pagination">
           {this.paginationDisplay()}
