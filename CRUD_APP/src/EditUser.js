@@ -19,6 +19,7 @@ class EditUser extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.inputChange = this.inputChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.inputValidate = this.inputValidate.bind(this);
   }
 
   componentDidMount() {
@@ -47,44 +48,75 @@ class EditUser extends Component {
     else return;
   }
 
+  inputValidate() {
+    let regex = /^[a-zA-Z ]{2,30}$/;
+    let f_name = this.state.name;
+    let l_name = this.state.job;
+
+    if (f_name === "" && l_name === "") {
+      alert("You must enter both the fields...");
+      return false;
+    }
+    if (f_name === "") {
+      alert("You must enter name...");
+      return false;
+    }
+    if (l_name === "") {
+      alert("You must enter job...");
+      return false;
+    }
+
+    if (!regex.test(f_name)) {
+      alert("You must enter valid name...");
+      return false;
+    }
+    if (!regex.test(l_name)) {
+      alert("You must enter valid job...");
+      return false;
+    }
+    return true;
+  }
+
   handleClick() {
-    this.setState({ loading: true });
-    if (this.state.edit) {
-      apiCall(`users/${this.props.match.params.id}`).editUser({
-        name: this.state.name,
-        job: this.state.job
-      })
-        // API.put(`users/${this.props.match.params.id}`, {
-        //   name: this.state.name,
-        //   job: this.state.job
-        // })
-        //   .then(rs => {
-        //     console.log("res...", rs);
-        //     return rs.data;
-        //   })
-        .then(() => this.setState({ loading: false }))
-        .catch(err => {
-          console.log(err);
-        });
+    if (this.inputValidate()) {
+      this.setState({ loading: true });
+      if (this.state.edit) {
+        apiCall(`users/${this.props.match.params.id}`).editUser({
+          name: this.state.name,
+          job: this.state.job
+        })
+          // API.put(`users/${this.props.match.params.id}`, {
+          //   name: this.state.name,
+          //   job: this.state.job
+          // })
+          //   .then(rs => {
+          //     console.log("res...", rs);
+          //     return rs.data;
+          //   })
+          .then(() => this.setState({ loading: false }))
+          .catch(err => {
+            console.log(err);
+          });
+      }
+      else {
+        apiCall('users').addUser({
+          name: this.state.name,
+          job: this.state.job
+        })
+          // API.post('users', {
+          //   name: this.state.name,
+          //   job: this.state.job
+          // })
+          //   .then(function (response) {
+          //     console.log(response);
+          //   })
+          .then(() => this.setState({ loading: false }))
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+      this.setState({ name: "", job: "" });
     }
-    else {
-      apiCall('users').addUser({
-        name: this.state.name,
-        job: this.state.job
-      })
-        // API.post('users', {
-        //   name: this.state.name,
-        //   job: this.state.job
-        // })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
-        .then(() => this.setState({ loading: false }))
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-    this.setState({ name: "", job: "" });
   }
 
   handleReset() {
