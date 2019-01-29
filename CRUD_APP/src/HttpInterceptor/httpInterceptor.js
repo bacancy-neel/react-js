@@ -6,7 +6,7 @@ export default {
 			get: () => API.get(url)
 				.then(res => {
 					console.log(res);
-					return res;
+					return res.data;
 				})
 				.catch(err => { return this.handleError(err) }),
 			post: (data) => API.post(url, data)

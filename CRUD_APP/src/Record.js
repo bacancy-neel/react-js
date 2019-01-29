@@ -23,8 +23,8 @@ class Record extends Component {
       this.setState({ isLoding: true });
       apiCall(`users?page=${this.state.page}`).getUserData()
         .then(data => this.setState({
-          users: data.data.data,
-          totalPage: data.data.total_pages,
+          users: data.data,
+          totalPage: data.total_pages,
           isLoding: false, isPageChanging: false
         }))
         .catch(error => this.setState({ error: error, isLoding: false, isPageChanging: false }))
@@ -60,8 +60,8 @@ class Record extends Component {
     this.setState({ isLoding: true });
     apiCall(`users?page=${this.state.page}`).getUserData()
       .then(data => this.setState({
-        users: data.data.data,
-        totalPage: data.data.total_pages,
+        users: data.data,
+        totalPage: data.total_pages,
         isLoding: false, isPageChanging: false
       }))
       .catch(error => this.setState({ error: error, isLoding: false, isPageChanging: false }));

@@ -27,9 +27,9 @@ class EditUser extends Component {
       this.setState({ loading: true });
       apiCall(`users/${this.props.match.params.id}`).getUserData()
         .then(data => this.setState({
-          name: data.data.data.first_name,
-          job: data.data.data.last_name,
-          avatar: data.data.data.avatar,
+          name: data.data.first_name,
+          job: data.data.last_name,
+          avatar: data.data.avatar,
           loading: false
         }))
         .catch(err => {
