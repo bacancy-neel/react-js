@@ -14,7 +14,7 @@ class EditUser extends Component {
       job: "",
       avatar: "",
       loading: false,
-      edit: this.props.edit || false
+      edit: (this.props.match.params.id) ? true : false
     }
     this.handleClick = this.handleClick.bind(this);
     this.inputChange = this.inputChange.bind(this);
@@ -22,7 +22,17 @@ class EditUser extends Component {
     this.inputValidate = this.inputValidate.bind(this);
   }
 
+  componentWillReceiveProps() {
+    this.setState({
+      name: "",
+      job: "",
+      avatar: "",
+      edit: false
+    });
+  }
+
   componentDidMount() {
+    console.log(this.props.match.params.id);
     if (this.state.edit) {
       this.setState({ loading: true });
       apiCall(`users/${this.props.match.params.id}`).getUserData()

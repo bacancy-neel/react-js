@@ -8,36 +8,39 @@ class Record extends Component {
     super(props);
     this.state = {
       isLoding: false,
-      users: [],
-      totalPage: 1,
-      page: 1,
-      error: null
+      usersList: {
+        data: [],
+        page: 1,
+        per_page: 3,
+        total: 12,
+        total_pages: 4
+      },
     }
     this.paginationDisplay = this.paginationDisplay.bind(this);
     //this.getUserData = this.getUserData.bind(this);
     this.pageChange = this.pageChange.bind(this);
   }
 
-  pageChange(e) {
-    this.setState({ page: e.target.value }, () => {
-      this.setState({ isLoding: true });
-      apiCall(`users?page=${this.state.page}`).getUserData()
-        .then(data => this.setState({
-          users: data.data,
-          totalPage: data.total_pages,
-          isLoding: false, isPageChanging: false
-        }))
-        .catch(error => this.setState({ error: error, isLoding: false, isPageChanging: false }))
-    });
+  pageChange(num) {
+    this.setState({ isLoding: true });
+    apiCall(`users?page=${num}`).getUserData()
+      .then(data => this.setState({
+        usersList: data,
+        isLoding: false
+      }))
+      .catch(error => {
+        console.log(error);
+        this.setState({ isLoding: false });
+      })
   }
 
   paginationDisplay() {
-    return Array(this.state.totalPage).fill(0).map((btn, i) =>
+    return Array(this.state.usersList.total_pages).fill(0).map((btn, i) =>
       <button value={i + 1}
         key={`btn${i + 1}`}
-        className={(Number(this.state.page) === i + 1) ? "btn active" : "btn"}
-        disabled={(Number(this.state.page) === i + 1) ? true : false}
-        onClick={(e) => this.pageChange(e)}> {btn + i + 1}</button >
+        className={(Number(this.state.usersList.page) === i + 1) ? "btn active" : "btn"}
+        disabled={(Number(this.state.usersList.page) === i + 1) ? true : false}
+        onClick={() => this.pageChange(i + 1)}> {btn + i + 1}</button >
     );
   }
 
@@ -57,22 +60,21 @@ class Record extends Component {
   }
 
   componentDidMount() {
-    this.setState({ isLoding: true });
-    apiCall(`users?page=${this.state.page}`).getUserData()
-      .then(data => this.setState({
-        users: data.data,
-        totalPage: data.total_pages,
-        isLoding: false, isPageChanging: false
-      }))
-      .catch(error => this.setState({ error: error, isLoding: false, isPageChanging: false }));
+    this.pageChange(this.state.usersList.page);
+    // apiCall(`users?page=1`).getUserData()
+    //   .then(data => this.setState({
+    //     userList: data,
+    //     isLoding: false
+    //   }))
+    //   .catch(error => {
+    //     console.log(error);
+    //     this.setState({ isLoding: false })
+    //   });
   }
 
   render() {
-    const { users, error, isLoding } = this.state;
-    if (error) {
-      return <p>{error.message}</p>
-    }
-    if (isLoding && users.length === 0) {
+    const { usersList, isLoding } = this.state;
+    if (isLoding && usersList.data.length === 0) {
       return <p>Please wait while we are fetching user detail...</p>
     }
 
@@ -94,7 +96,7 @@ class Record extends Component {
             </div>
           </div>
 
-          {users.map((user, i) =>
+          {usersList.data.map((user, i) =>
             <div className="row" key={`user${i + 1}`}>
               <div className="cell">
                 {user.first_name}
@@ -124,7 +126,7 @@ class Record extends Component {
         </div>
         <div className="pagination">
           {this.paginationDisplay()}
-        </div>{(isLoding && users.length !== 0) ? <p>Fetching data...</p> : <p></p>}
+        </div>{(isLoding && usersList.data.length !== 0) ? <p>Fetching data...</p> : <p></p>}
       </React.Fragment>
     );
   }

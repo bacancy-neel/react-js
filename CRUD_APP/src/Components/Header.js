@@ -10,7 +10,7 @@ class Header extends Component {
 					<ul>
 						<li><NavLink activeClassName="active" exact to="/">Record List</NavLink></li>
 						<li> | </li>
-						<li><NavLink activeClassName="active" exact to="/add-record">Add Record</NavLink></li>
+						<li><NavLink activeClassName="active" exact to="/new">Add Record</NavLink></li>
 					</ul>
 				</div>
 			</React.Fragment>
