@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 //import API from './API';
-import apiCall from './ApiCalls/apiCalls'
+import apiCall from '../ApiCalls/apiCalls'
 
-import './AddRecord.css'
+import '../CSS/AddRecord.css'
 
 
 

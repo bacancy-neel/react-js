@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 //import API from './API';
-import apiCall from './ApiCalls/apiCalls'
+import apiCall from '../ApiCalls/apiCalls'
 
 class Record extends Component {
   constructor(props) {
