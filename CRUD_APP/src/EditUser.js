@@ -14,7 +14,7 @@ class EditUser extends Component {
       job: "",
       avatar: "",
       loading: false,
-      edit: this.props.edit
+      edit: this.props.edit || false
     }
     this.handleClick = this.handleClick.bind(this);
     this.inputChange = this.inputChange.bind(this);

@@ -16,7 +16,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Record} />
-            <Route exact path="/add-record" render={(props) => <EditUser {...props} edit={false} key="add-user" />} />
+            <Route exact path="/add-record" render={(props) => <EditUser {...props} key="add-user" />} />
             <Route exact path="/edit-user/:id" render={(props) => <EditUser {...props} edit={true} />} />
             <Route exact path="/delete-user/:id" component={Record} />
           </Switch>
