@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import API from './API';
-import apiCall from '../ApiCalls/apiCalls'
+import { addUser, editUser, getUserData } from '../ApiCalls/apiCalls'
 
 import '../CSS/AddRecord.css'
 
@@ -22,20 +22,21 @@ class EditUser extends Component {
     this.inputValidate = this.inputValidate.bind(this);
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      name: "",
-      job: "",
-      avatar: "",
-      edit: false
-    });
+  componentDidUpdate(preProps, prevState) {
+    if (preProps !== this.props) {
+      this.setState({
+        name: "",
+        job: "",
+        avatar: "",
+        edit: false
+      });
+    }
   }
 
   componentDidMount() {
-    console.log(this.props.match.params.id);
     if (this.state.edit) {
       this.setState({ loading: true });
-      apiCall(`users/${this.props.match.params.id}`).getUserData()
+      getUserData(this.props.match.params.id)
         .then(data => this.setState({
           name: data.data.first_name,
           job: data.data.last_name,
@@ -91,7 +92,7 @@ class EditUser extends Component {
     if (this.inputValidate()) {
       this.setState({ loading: true });
       if (this.state.edit) {
-        apiCall(`users/${this.props.match.params.id}`).editUser({
+        editUser(this.props.match.params.id, {
           name: this.state.name,
           job: this.state.job
         })
@@ -109,7 +110,7 @@ class EditUser extends Component {
           });
       }
       else {
-        apiCall('users').addUser({
+        addUser({
           name: this.state.name,
           job: this.state.job
         })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 //import API from './API';
-import apiCall from '../ApiCalls/apiCalls'
+import { deleteUser, getAllUser } from '../ApiCalls/apiCalls'
 
 class Record extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Record extends Component {
 
   pageChange(num) {
     this.setState({ isLoding: true });
-    apiCall(`users?page=${num}`).getUserData()
+    getAllUser(num)
       .then(data => this.setState({
         usersList: data,
         isLoding: false
@@ -56,7 +56,7 @@ class Record extends Component {
   // }
 
   handleClick() {
-    apiCall(`users/${this.props.match.params.id}`).deleteUser();
+    deleteUser(this.props.match.params.id);
   }
 
   componentDidMount() {

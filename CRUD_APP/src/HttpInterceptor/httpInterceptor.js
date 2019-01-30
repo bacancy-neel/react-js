@@ -5,35 +5,44 @@ export default {
 		return {
 			get: () => API.get(url)
 				.then(res => {
-					console.log(res);
-					return res.data;
+					console.log("API RESPONSE:::", res);
+					return onSuccess(res);
 				})
-				.catch(err => { return this.handleError(err) }),
+				.catch(() => { return handleError() }),
 			post: (data) => API.post(url, data)
 				.then(res => {
-					console.log(res);
-					return res;
+					console.log("API RESPONSE:::", res);
+					return onSuccess(res);
 				})
-				.catch(err => { return this.handleError(err) }),
+				.catch(() => { return handleError() }),
 			put: (data) => API.put(url, data)
 				.then(res => {
-					console.log(res);
-					return res;
+					console.log("API RESPONSE:::", res);
+					return onSuccess(res);
 				})
-				.catch(err => { return this.handleError(err) }),
+				.catch(() => { return handleError() }),
 			delete: () => API.delete(url)
 				.then(res => {
-					console.log(res);
-					return res;
+					console.log("API RESPONSE:::", res);
+					return onSuccess(res);
 				})
-				.catch(err => { return this.handleError(err) })
+				.catch(() => { return handleError() })
 
 		}
 	},
+}
 
-	handleError(err) {
-		return {
-			error: { error: true, msg: err }
-		}
+const onSuccess = (res) => {
+	return {
+		success: true,
+		data: res.data,
+		err: null
+	}
+}
+const handleError = () => {
+	return {
+		success: false,
+		data: null,
+		err: "SOMETHING WENT WRONG"
 	}
 }
