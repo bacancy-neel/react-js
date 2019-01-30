@@ -22,7 +22,7 @@ class EditUser extends Component {
     this.inputValidate = this.inputValidate.bind(this);
   }
 
-  componentDidUpdate(preProps, prevState) {
+  componentDidUpdate(preProps) {
     if (preProps !== this.props) {
       this.setState({
         name: "",
