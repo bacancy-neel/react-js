@@ -56,6 +56,16 @@ class Record extends Component {
   // }
 
   handleClick() {
+    // const users = this.state.usersList.data.filter((user) => (user.id !== Number(this.props.match.params.id)));
+    // this.setState({
+    //   usersList: {
+    //     data: users,
+    //     page: 1,
+    //     per_page: 3,
+    //     total: 12,
+    //     total_pages: 4
+    //   }
+    // });
     deleteUser(this.props.match.params.id);
   }
 
